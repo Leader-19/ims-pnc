@@ -22,6 +22,7 @@ const showAvatar = computed(
 </script>
 
 <template>
+    
     <Avatar class="h-8 w-8 overflow-hidden rounded-lg">
         <AvatarImage v-if="showAvatar" :src="user.avatar!" :alt="user.name" />
         <AvatarFallback class="rounded-lg text-black dark:text-white">

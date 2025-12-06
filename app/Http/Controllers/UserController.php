@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -23,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render("Users/Create");
     }
 
     /**
@@ -31,7 +32,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+
+        $request->validate([
+            "name" => "required",
+            "email" => "required|email",
+            "password" => "required"
+        ]);
+
+        User::create(
+            $request->only(["name", "email"]) + ["password" => Hash::make($request->password)]
+
+
+        );
+
+        return to_route("users.index");
     }
 
     /**
@@ -39,7 +54,9 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return Inertia::render('Users/Show', [
+            "user" => User::find($id)
+        ]);
     }
 
     /**
@@ -47,7 +64,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return Inertia::render('Users/Update', [
+            "user" => User::find($id)
+        ]);
     }
 
     /**
@@ -55,14 +74,35 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "email" => "required|email",
+            "password" => "required"
+        ]);
+
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        };
+
+        $user->save();
+
+        return to_route("users.index");
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        User::destroy($id);
+
+        return to_route("users.index");
     }
 }

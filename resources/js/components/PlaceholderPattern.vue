@@ -30,4 +30,6 @@ const patternId = computed(
             height="100%"
         ></rect>
     </svg>
+
+    <h1>Hi</h1>
 </template>

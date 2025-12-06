@@ -23,6 +23,7 @@ defineProps<{
     <AuthBase
         title="Log in to your account"
         description="Enter your email and password below to log in"
+        class="shadow-lg rounded-xl p-6"
     >
         <Head title="Log in" />
 
@@ -37,7 +38,7 @@ defineProps<{
             v-bind="store.form()"
             :reset-on-success="['password']"
             v-slot="{ errors, processing }"
-            class="flex flex-col gap-6"
+            class="flex flex-col gap-6 shadow-lg bg-white p-8 rounded-2xl"
         >
             <div class="grid gap-6">
                 <div class="grid gap-2">

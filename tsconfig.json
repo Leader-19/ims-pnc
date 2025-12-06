@@ -7,7 +7,7 @@
         "jsxImportSource": "vue",
 
         "module": "ESNext",
-        "moduleResolution": "bundler",
+        "moduleResolution": "node",
 
         "baseUrl": ".", 
         "paths": {
