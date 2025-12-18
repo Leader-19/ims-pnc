@@ -12,26 +12,50 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-
 /**
- * dashboard router
+ * Dashboard route
  */
-
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 /**
- * user router
- * @create, retrive, updaet and delete
+ * User routes
+ * create, retrieve, update, delete
  */
+Route::resource('users', UserController::class)
+    ->only(['create', 'store'])
+    ->middleware('permission:users.create');
 
-Route::resource("users", UserController::class);
+Route::resource('users', UserController::class)
+    ->only(['edit', 'update'])
+    ->middleware('permission:users.edit');
+
+Route::resource('users', UserController::class)
+    ->only(['destroy'])
+    ->middleware('permission:users.delete');
+
+Route::resource('users', UserController::class)
+    ->only(['index', 'show'])
+    ->middleware('permission:users.create|users.edit|users.delete|users.view');
 
 /**
- * Role router
+ * Role routes
  */
+Route::resource('roles', RoleController::class)
+    ->only(['create', 'store'])
+    ->middleware('permission:roles.create');
 
-Route::resource("roles", RoleController::class);
+Route::resource('roles', RoleController::class)
+    ->only(['edit', 'update'])
+    ->middleware('permission:roles.edit');
 
-require __DIR__.'/settings.php';
+Route::resource('roles', RoleController::class)
+    ->only(['destroy'])
+    ->middleware('permission:roles.delete');
+
+Route::resource('roles', RoleController::class)
+    ->only(['index', 'show'])
+    ->middleware('permission:roles.create|roles.edit|roles.delete|roles.view');
+
+require __DIR__ . '/settings.php';

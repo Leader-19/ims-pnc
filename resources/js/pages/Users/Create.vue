@@ -12,10 +12,15 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
+defineProps ({
+    "roles" : Array
+})
+
 const form = useForm({
     "name": "",
     "email": "",
-    "password": ""
+    "password": "",
+    "roles" : []
 })
 
 
@@ -73,7 +78,21 @@ const form = useForm({
                     <p class="text-red-500 text-sm mt-1" v-if="form.errors.password">{{ form.errors.password }}</p>
                 </div>
 
-                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-medium rounded px-4 py-3">
+                <div class="grid gap-2">
+                    <label for="name" class="text-sm leading-none font-medium select-none peer-disable-cusor">
+                        Roles:
+                    </label>
+
+                    <label v-for="role in roles" class="flex items-center space-x-2">
+                        <input v-model="form.roles" :value="role" type="checkbox"
+                            class="form-checkbox h-5 w-5 text-blue-600 focus:ring-2">
+                        <span class="text-gray-500 capitalize">{{ role }}</span>
+                    </label>
+                    <p class="text-red-500 text-sm mt-1" v-if="form.errors.roles">{{ form.errors.roles }}
+                    </p>
+                </div>
+
+                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-medium rounded px-4 py-2">
                     Create
                 </button>
             </form>
