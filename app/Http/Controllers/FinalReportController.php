@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CompanyInternship extends Controller
+class FinalReportController extends Controller
 {
     /**
      * Display a listing of the resource.

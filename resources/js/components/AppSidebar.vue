@@ -40,37 +40,37 @@ const mainNavItems: NavItem[] = [
 
      {
         title: 'Weekly Worklog',
-        href: '',
+        href: '/weekly-worklogs',
         icon: Calendar,
         items: undefined
     },
     {
         title: 'Final Report',
-        href: '',
+        href: '/final-reports',
         icon: FileText,
         items: undefined
     },
     {
         title: 'Final Slides',
-        href: '',
+        href: '/final-slides',
         icon: Presentation,
         items: undefined
     },
     {
         title: 'Contact Supervisor',
-        href: '',
+        href: '/contact-supervisors',
         icon: Phone,
         items: undefined
     },
      {
         title: 'Company Interviews',
-        href: '',
+        href: '/company-interviews',
         icon: MessagesSquare,
         items: undefined
     },
      {
         title: 'Company Internship',
-        href: '',
+        href: '/internships',
         icon: BriefcaseBusiness,
         items: undefined
     },

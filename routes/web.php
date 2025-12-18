@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CompanyInternshipController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Models\CompanyInternship;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -57,5 +59,7 @@ Route::resource('roles', RoleController::class)
 Route::resource('roles', RoleController::class)
     ->only(['index', 'show'])
     ->middleware('permission:roles.create|roles.edit|roles.delete|roles.view');
+
+Route::resource('internships', CompanyInternshipController::class);
 
 require __DIR__ . '/settings.php';

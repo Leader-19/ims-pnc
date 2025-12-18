@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class WeeklyWorklog extends Controller
+class ContactSupervisorController extends Controller
 {
     /**
      * Display a listing of the resource.
