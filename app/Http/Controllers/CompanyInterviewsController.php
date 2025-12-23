@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class ContactSupervisorController extends Controller
+class CompanyInterviewsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Inertia::render("Contact/Contact");
+        return Inertia::render("Interview/Interview");
     }
 
     /**

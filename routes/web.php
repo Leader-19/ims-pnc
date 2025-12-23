@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\CompanyInternshipController;
+use App\Http\Controllers\CompanyInterviewsController;
+use App\Http\Controllers\ContactSupervisorController;
+use App\Http\Controllers\FinalReportController;
+use App\Http\Controllers\FinalSlideController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Models\CompanyInternship;
+use App\Http\Controllers\WeeklyWorklogController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -60,6 +64,41 @@ Route::resource('roles', RoleController::class)
     ->only(['index', 'show'])
     ->middleware('permission:roles.create|roles.edit|roles.delete|roles.view');
 
+
+/**
+ * Internship route
+ */
+
 Route::resource('internships', CompanyInternshipController::class);
+
+/**
+ * Interview route
+ */
+
+Route::resource('company-interviews', CompanyInterviewsController::class);
+
+/**
+ * Final slide route
+ */
+
+Route::resource('final-slides', FinalSlideController::class);
+
+/**
+ * Final report route
+ */
+
+Route::resource('final-reports', FinalReportController::class);
+
+/**
+ * Contact Supervisor
+ */
+
+Route::resource('contact-supervisors', ContactSupervisorController::class);
+
+/**
+ * weekly worklog route
+ */
+
+Route::resource('weekly-worklogs', WeeklyWorklogController::class);
 
 require __DIR__ . '/settings.php';
