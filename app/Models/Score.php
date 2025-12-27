@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Score extends Model
 {
+
+    protected $fillable = [
+        'weekly_worklog_score',
+        'final_slide_score',
+        'final_report_score'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -20,7 +20,9 @@ class WeeklyWorklogController extends Controller
      */
     public function create()
     {
-        //
+        /**
+         * show create form
+         */
     }
 
     /**
@@ -28,7 +30,9 @@ class WeeklyWorklogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /**
+         * validate in form
+         */
     }
 
     /**
@@ -36,7 +40,7 @@ class WeeklyWorklogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //show view details
     }
 
     /**
@@ -44,7 +48,7 @@ class WeeklyWorklogController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //show edit form
     }
 
     /**
@@ -52,7 +56,7 @@ class WeeklyWorklogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //validate and update
     }
 
     /**
@@ -60,6 +64,6 @@ class WeeklyWorklogController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //destroy weekly worklog
     }
 }

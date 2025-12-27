@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class FinalSlide extends Model
 {
+
+    protected $fillable = [
+        'slide_name',
+        'slide_upload',
+        'description'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
