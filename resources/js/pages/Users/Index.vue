@@ -80,8 +80,7 @@ function deleteUser(id) {
                             <Link :href="route('users.show', user.id)"
                                 class="cursor-pointer px-3 py-2 text-xs mr-2 font-medium text-white bg-gray-700 rounded">
                                 Show
-                            </Link>
-
+                            </Link> 
                             <Link 
                             v-if="can('users.edit')"
                             :href="route('users.edit', user.id)"

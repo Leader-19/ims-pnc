@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class WeeklyWorklog extends Model
 {
 
-    protected $filable = [
-        'worklog_name',
-        'worklog_upload',
-        'discription'
-    ];
+    protected $fillable = [
+        'user_id',     
+    'worklog_name',
+    'worklog_upload',
+    'discription'
+];
+
 
     public function user()
     {

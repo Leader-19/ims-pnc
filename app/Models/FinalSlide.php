@@ -8,6 +8,7 @@ class FinalSlide extends Model
 {
 
     protected $fillable = [
+        'user_id',
         'slide_name',
         'slide_upload',
         'description'

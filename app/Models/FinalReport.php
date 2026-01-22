@@ -8,11 +8,12 @@ class FinalReport extends Model
 {
 
     protected $fillable = [
+        'user_id',
         'report_name',
         'final_upload',
         'description',
     ];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);

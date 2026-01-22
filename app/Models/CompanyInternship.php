@@ -8,6 +8,7 @@ class CompanyInternship extends Model
 {
 
     protected $fillable = [
+        'user_id',
         'company_name',
         'start_date',
         'end_date',

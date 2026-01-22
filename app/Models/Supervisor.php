@@ -8,6 +8,7 @@ class Supervisor extends Model
 {
 
     protected $fillable = [
+        'user_id',
         'supervisor_name',
         'email_supervisor',
         'supervisor_phone_number'

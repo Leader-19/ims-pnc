@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CompanyInterview;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -12,7 +13,9 @@ class CompanyInterviewsController extends Controller
      */
     public function index()
     {
-        return Inertia::render("Interview/Interview");
+        return Inertia::render("Interview/Interview", [
+            "interviews" => CompanyInterview::with("user")->get()
+        ]);
     }
 
     /**
@@ -20,7 +23,9 @@ class CompanyInterviewsController extends Controller
      */
     public function create()
     {
-        //
+        //show form create
+
+        return Inertia::render("Interview/CreateInterview");
     }
 
     /**
@@ -28,7 +33,21 @@ class CompanyInterviewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate input form and update to database
+
+        $request->validate([
+            'company_name' => 'required|string|max:255|unique:company_interviews,company_name',
+            'date_interview' => 'required|date',
+        ]);
+
+        CompanyInterview::create([
+            'user_id' => auth()->id(),
+            'company_name'  => $request->company_name,
+            'date_interview' => $request->date_interview
+        ]);
+
+        return redirect()->route('company-interviews.index')
+            ->with('success', 'Company Interview created successfully!');
     }
 
     /**
@@ -36,7 +55,11 @@ class CompanyInterviewsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //show details
+
+        return Inertia::render("Interview/ShowInterview", [
+            "interview" => CompanyInterview::findOrFail($id)
+        ]);
     }
 
     /**
@@ -44,7 +67,12 @@ class CompanyInterviewsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //show form edit company interview
+        $interview = CompanyInterview::findOrFail($id);
+
+        return Inertia::render('Interview/EditInterview', [
+            'interview' => $interview,
+        ]);
     }
 
     /**
@@ -52,7 +80,22 @@ class CompanyInterviewsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //validate form update to database
+
+        $interview = CompanyInterview::findOrFail($id);
+
+        $request->validate([
+            'company_name' => 'required|string|max:255|unique:company_interviews,company_name',
+            'date_interview' => 'required|date',
+        ]);
+
+
+        $interview->company_name = $request->company_name;
+        $interview->date_interview = $request->date_interview;
+        $interview->save();
+
+        return redirect()->route('company-interviews.index')
+            ->with('success', 'Company Interview updated successfully!');
     }
 
     /**
@@ -60,6 +103,9 @@ class CompanyInterviewsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //delete specific record
+
+        CompanyInterview::destroy($id);
+        return to_route("company-interviews.index");
     }
 }

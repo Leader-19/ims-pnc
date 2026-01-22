@@ -83,11 +83,32 @@ Route::resource('company-interviews', CompanyInterviewsController::class);
 
 Route::resource('final-slides', FinalSlideController::class);
 
+// Show evaluate form (GET)
+Route::get('/final-slides/{slide}/evaluate', [FinalSlideController::class, 'evaluate'])
+    ->name('final-slides.evaluate');
+
+
+// Save score (POST)
+Route::post('/final-slides/{slide}/evaluate-score', [FinalSlideController::class, 'evaluateScoreFinalSlide'])
+    ->name('final-slides.evaluate-score');
+
 /**
  * Final report route
  */
 
 Route::resource('final-reports', FinalReportController::class);
+
+// Show evaluate form (GET)
+Route::get(
+    '/final-reports/{id}/evaluate',
+    [FinalReportController::class, 'evaluate']
+)->name('final-reports.evaluate');
+
+// Save score (POST)
+Route::post(
+    '/final-reports/{id}/evaluate-score',
+    [FinalReportController::class, 'evaluateScoreFinalReports']
+)->name('final-reports.evaluate-score');
 
 /**
  * Contact Supervisor
@@ -100,5 +121,17 @@ Route::resource('contact-supervisors', ContactSupervisorController::class);
  */
 
 Route::resource('weekly-worklogs', WeeklyWorklogController::class);
+// Show evaluate form (GET)
+Route::get(
+    '/weekly-worklogs/{id}/evaluate',
+    [WeeklyWorklogController::class, 'evaluate']
+)->name('weekly-worklogs.evaluate');
+
+// Save score (POST)
+Route::post(
+    '/weekly-worklogs/{id}/evaluate-score',
+    [WeeklyWorklogController::class, 'evaluateScoreWeekly']
+)->name('weekly-worklogs.evaluate-score');
+
 
 require __DIR__ . '/settings.php';

@@ -8,8 +8,11 @@ class Score extends Model
 {
 
     protected $fillable = [
+        'weekly_worklog_id',
         'weekly_worklog_score',
+        'final_slide_id',
         'final_slide_score',
+        'final_report_id',
         'final_report_score'
     ];
 
